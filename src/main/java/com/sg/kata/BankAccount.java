@@ -21,6 +21,16 @@ public class BankAccount {
         makeOperation(date, amount);
     }
 
+    public void withdraw(LocalDateTime date, double amount) throws BankAccountException {
+        if(amount > 0) {
+            throw new BankAccountException("cannot withdraw a positive amount");
+        }
+        if(balance + amount < 0) {
+            throw new BankAccountException("you don't have enough money");
+        }
+        makeOperation(date, amount);
+    }
+
     private void makeOperation(LocalDateTime date, double amount) {
         balance += amount;
         AccountStatement accountStatement = new AccountStatement(date, amount, balance);
