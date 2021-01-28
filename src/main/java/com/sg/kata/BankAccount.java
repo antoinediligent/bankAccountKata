@@ -40,4 +40,12 @@ public class BankAccount {
     public double getBalance() {
         return balance;
     }
+
+    public String history() {
+        StringBuffer stringBuffer = new StringBuffer();
+        for(AccountStatement accountStatement : accountStatementList) {
+            stringBuffer.append(accountStatement.toString());
+        }
+        return stringBuffer.toString();
+    }
 }

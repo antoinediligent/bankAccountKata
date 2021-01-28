@@ -74,4 +74,29 @@ public final class BankAccountTest {
             org.junit.Assert.assertNotNull(e);
         }
     }
+
+    @Test
+    public void historyTest() {
+        try {
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.deposit(LocalDateTime.now(), 100);
+            bankAccount.withdraw(LocalDateTime.now(), -20);
+
+            String history = bankAccount.history();
+            // System.out.println(history);
+
+            String[] splitHistory = history.split("\n");
+            String historyFirstLine = splitHistory[0];
+            String historySecondLine = splitHistory[1];
+
+            org.junit.Assert.assertTrue(historyFirstLine.contains("deposit"));
+            org.junit.Assert.assertTrue(historyFirstLine.contains("100.0     100.0"));
+
+            org.junit.Assert.assertTrue(historySecondLine.contains("withdrawal"));
+            org.junit.Assert.assertTrue(historySecondLine.contains("-20.0     80.0"));
+
+        } catch (BankAccountException e) {
+            e.printStackTrace();
+        }
+    }
 }

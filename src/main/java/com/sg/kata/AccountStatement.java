@@ -1,6 +1,7 @@
 package com.sg.kata;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class AccountStatement {
 
@@ -26,5 +27,20 @@ public class AccountStatement {
 
     public double getBalance() {
         return balance;
+    }
+
+    @Override
+    public String toString() {
+        String operation;
+        if(amount < 0) {
+            operation = "withdrawal";
+        } else {
+            operation = "deposit";
+        }
+        return operation +
+                "     " + date.format(DateTimeFormatter.ISO_DATE) +
+                "     " + amount +
+                "     " + balance +
+                "\n";
     }
 }

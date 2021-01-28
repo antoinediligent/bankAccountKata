@@ -15,6 +15,11 @@
     <servlet-class>com.sg.kata.api.WithdrawServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>HistoryServlet</servlet-name>
+    <servlet-class>com.sg.kata.api.HistoryServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>DepositServlet</servlet-name>
     <url-pattern>/deposit</url-pattern>
@@ -23,6 +28,11 @@
   <servlet-mapping>
     <servlet-name>WithdrawServlet</servlet-name>
     <url-pattern>/withdraw</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>HistoryServlet</servlet-name>
+    <url-pattern>/history</url-pattern>
   </servlet-mapping>
 
 </web-app>
